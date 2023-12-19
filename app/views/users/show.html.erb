@@ -6,3 +6,13 @@
     <li><%= link_to event.name, event_path(event) %></li>
   <% end %>
 </ul>
+
+<h4>Events Attending</h4>
+
+<ul>
+  <% @user.attended_events.each do |a_event| %>
+    <li><%= link_to a_event.name,  a_event %></li> 
+  <% end %>
+</ul>
+
+

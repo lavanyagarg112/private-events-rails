@@ -9,9 +9,14 @@ class AttendancesController < ApplicationController
     end
 
     def destroy
+
         @attendance = current_user.attendances.find_by(attended_event_id: params[:id])
-        @attendance.destroy if @attendance
-        redirect_to root_path
+        
+        if @attendance
+            @event =  @attendance.attended_event
+            @attendance.destroy
+            redirect_to @event
+        end
         
     end
 
