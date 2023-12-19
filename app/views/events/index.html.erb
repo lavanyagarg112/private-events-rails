@@ -1,6 +1,9 @@
 <h1>All Events</h1>
 
+
 <% if user_signed_in? %>
+
+    <%= link_to 'View Profile', user_path(current_user) %>
   <%= button_to 'Sign Out', destroy_user_session_path, method: :delete %>
   <% else %>
   <%= button_to 'Sign In', new_user_session_path, method: :get  %>
