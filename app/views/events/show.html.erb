@@ -2,3 +2,19 @@
 
 <p>Date: <%= @event.date %></p>
 <p>Location: <%= @event.location %></p>
+
+<% if user_signed_in? %>
+  <% if current_user.attendances.exists?(attended_event_id: @event.id) %>
+    <%= button_to 'Cancel Attendance', attendance_path(id: @event.id), method: :delete %>
+  <% else %>
+    <%= button_to 'Attend Event', attendances_path(event_id: @event.id), method: :post %>
+  <% end %>
+<% end %>
+
+<h4>Attendees</h4>
+
+<ul>
+  <% @event.attendees.each do |attendee| %>
+    <li><%= attendee.username %></li> 
+  <% end %>
+</ul>
