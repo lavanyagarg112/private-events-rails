@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_19_072336) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_19_084308) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.date "date"
@@ -35,5 +35,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_19_072336) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "events", "creators"
+  add_foreign_key "events", "users", column: "creator_id"
 end
